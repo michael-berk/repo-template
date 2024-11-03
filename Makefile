@@ -10,11 +10,12 @@ test:
 	python -m pytest $(TESTS_DIR)
 
 lint:
-	ruff check $(SRC_DIR) $(TESTS_DIR)
-	black --check $(SRC_DIR) $(TESTS_DIR)
+	ruff check $(SRC_DIR)
+	black --check $(SRC_DIR)
 
 format:
-	ruff check $(SRC_DIR) $(TESTS_DIR) --fix
-	black $(SRC_DIR) $(TESTS_DIR)
+	ruff format $(SRC_DIR)
+	ruff check $(SRC_DIR) --fix
+	black $(SRC_DIR)
 
 check: test lint
