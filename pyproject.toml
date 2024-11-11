@@ -2,6 +2,9 @@
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+exclude-package-data = {"": ["notebooks/**/*.py"]} # don't index notebooks on pip install
+
 [project]
 name = "TODO"
 version = "0.1.0"
