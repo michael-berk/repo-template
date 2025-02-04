@@ -11,7 +11,6 @@ test:
 
 lint:
 	ruff check $(SRC_DIR)
-	black --check $(SRC_DIR)
 
 format:
 	ruff format $(SRC_DIR)
