@@ -1,9 +1,6 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools]
-exclude-package-data = {"": ["notebooks/**/*.py"]} # don't index notebooks on pip install
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "TODO"
@@ -11,39 +8,25 @@ version = "0.1.0"
 description = "TODO"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = [
-    "numpy"
-]
 
 [project.optional-dependencies]
 dev = [
   "pytest",
   "ruff==0.6.4",
-  "black"
 ]
 
+[tool.hatch.metadata]
+allow-direct-references = true 
 
-[tool.black]
-line-length = 88
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+[tool.hatch.build]
+sources = ["src"]
 
 [tool.ruff]
 line-length = 100
 target-version = "py38"
 force-exclude = true
 extend-include = ["*.ipynb"]
+builtins = ["dbutils"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -110,6 +93,9 @@ ignore = [
   "E721", # type-comparison
   "E741", # ambiguous-variable-name
   "F811", # redefined-while-unused
+  "T201", # print
+  "E501", # line-too-long
+  "F821", # undefined-name
 ]
 
 [tool.ruff.lint.pydocstyle]
