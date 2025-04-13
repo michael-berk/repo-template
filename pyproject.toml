@@ -3,23 +3,20 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "TODO"
+name = "PACKAGE_NAME"
 version = "0.1.0"
-description = "TODO"
+description = "PACKAGE DESCRIPTION"
 readme = "README.md"
 requires-python = ">=3.9"
-
-[project.optional-dependencies]
-dev = [
-  "pytest",
-  "ruff==0.6.4",
-]
 
 [tool.hatch.metadata]
 allow-direct-references = true 
 
 [tool.hatch.build]
-sources = ["src"]
+sources = ["PACKAGE_NAME/src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
 
 [tool.ruff]
 line-length = 100
